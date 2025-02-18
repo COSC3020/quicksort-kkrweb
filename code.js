@@ -19,31 +19,27 @@ function quicksort(array) //iterative as specified, no recursion
         return array; //0 or 1 elements, no need to sort, just return
     }
 
-    var startPos = 0;
-    var endPos = arrLen - 1;
-    var pivotIndex = partitionArr(array, startPos, endPos);
+   var startPos = 0;
+   var endPos = arrLen - 1;
 
-    while(true)
+    while (startPos < endPos)
     {
-        if(startPos < pivotIndex - 1)
+        var pivotIndex = partitionArr(array, startPos, endPos);
+
+        if (pivotIndex - startPos < endPos - pivotIndex)
         {
-            endPos = pivotIndex - 1;
-            pivotIndex = partitionArr(array, startPos, endPos);
-        }
-            
-        else if(endPos > pivotIndex + 1)
-        {
+            quicksort(array.slice(startPos, pivotIndex));
             startPos = pivotIndex + 1;
-            pivotIndex = partitionArr(array, startPos, endPos);
         }
-            
+           
         else
         {
-            break; //exit while true via break once neither the if or else if is satisfied
+            quicksort(array.slice(pivotIndex + 1, endPos + 1));
+            endPos = pivotIndex - 1;
         }
-    
     }
-       return array;
+
+    return array;
 }
 
 
