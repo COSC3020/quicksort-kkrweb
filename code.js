@@ -12,7 +12,7 @@
 function quicksort(array) //iterative as specified, no recursion
 {
    // var pivot; //probably useless to declare this here, may have to live within the helper
-    var arrLen = array.length;
+   var arrLen = array.length;
 
    if (arrLen == 0 || arrLen == 1)
     {
@@ -22,11 +22,11 @@ function quicksort(array) //iterative as specified, no recursion
    var startPos = 0;
    var endPos = arrLen - 1;
 
-    while (startPos < endPos)
+    while(startPos < endPos)
     {
         var pivotIndex = partitionArr(array, startPos, endPos);
 
-        if (pivotIndex - startPos < endPos - pivotIndex)
+        if(pivotIndex - startPos < endPos - pivotIndex)
         {
             quicksort(array.slice(startPos, pivotIndex));
             startPos = pivotIndex + 1;
