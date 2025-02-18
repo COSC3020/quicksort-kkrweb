@@ -64,7 +64,7 @@ function partitionArr(array, startPos, endPos)
 
         for(var j = startPos; j < endPos; j++) //iterate over elements from startPos to endPos-1, all positions within the array as desired
         {
-            if(array[j] <= pivot) 
+            if(array[j] < pivot) 
             {
                 leftIndex++; //move leftIndex forward to adjust
                 temp = array[leftIndex]; //swap elements array[leftIndex] and array[j] using temp var
