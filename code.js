@@ -13,29 +13,35 @@ function quicksort(array) //iterative as specified, no recursion
 {
    // var pivot; //probably useless to declare this here, may have to live within the helper
    var arrLen = array.length;
-
+   var pivotIndex;
+   var stack;
+   
    if (arrLen == 0 || arrLen == 1)
     {
         return array; //0 or 1 elements, no need to sort, just return
     }
 
-   var startPos = 0;
-   var endPos = arrLen - 1;
+   stack = [[0, arrLen - 1]]; //tried to implement this w/o a stack, maybe only option?
 
-    while(startPos < endPos)
-    {
-        var pivotIndex = partitionArr(array, startPos, endPos);
+    while(stack.length > 0)
+       {
+         var popped = stack.pop();
+         var startPos = popped[0];
+         var endPos = popped[1];
+          
+        if(startPos < endPos) 
+        {
+            pivotIndex = partitionArr(array, startPos, endPos);
 
-        if(pivotIndex - startPos < endPos - pivotIndex)
-        {
-            quicksort(array.slice(startPos, pivotIndex));
-            startPos = pivotIndex + 1;
-        }
-           
-        else
-        {
-            quicksort(array.slice(pivotIndex + 1, endPos + 1));
-            endPos = pivotIndex - 1;
+            if(pivotIndex - 1 > startPos)
+            {
+                stack.push([startPos, pivotIndex - 1]);
+            }
+
+            if(pivotIndex + 1 < endPos) 
+            {
+                stack.push([pivotIndex + 1, endPos]);
+            }
         }
     }
 
