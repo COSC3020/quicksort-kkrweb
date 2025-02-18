@@ -51,8 +51,6 @@ function quicksort(array) //iterative as specified, no recursion
     //
 
 
-    
-
 function partitionArr(array, startPos, endPos)
 {
     var pivot; 
@@ -61,15 +59,30 @@ function partitionArr(array, startPos, endPos)
 
         pivot = array[endPos]; //select pivot element
         leftIndex = startPos - 1; //set leftIndex to position one before the start of the selection
+        var i = startPos;
 
-        for(var j = startPos; j < endPos; j++) //iterate over elements from startPos to endPos-1, all positions within the array as desired
+        while(i < endPos) //iterate over elements from startPos to endPos-1, all positions within the array as desired
         {
-            if(array[j] < pivot) 
+            if(array[i] < pivot) 
             {
                 leftIndex++; //move leftIndex forward to adjust
-                temp = array[leftIndex]; //swap elements array[leftIndex] and array[j] using temp var
-                array[leftIndex] = array[j];
-                array[j] = temp;
+                temp = array[leftIndex]; //swap elements array[leftIndex] and array[i] using temp var
+                array[leftIndex] = array[i];
+                array[i] = temp;
+                i++;
+            }
+               
+            else if(array[i] === pivot)
+            {
+                i++;
+            }
+               
+            else
+            {
+                temp = array[i];
+                array[i] = array[endPos - 1];
+                array[endPos - 1] = temp;
+                endPos--;
             }
         }
 
@@ -77,5 +90,5 @@ function partitionArr(array, startPos, endPos)
         array[leftIndex + 1] = array[endPos];
         array[endPos] = temp;
 
-        return leftIndex + 1; //may need to change
+        return leftIndex + 1;
 }
