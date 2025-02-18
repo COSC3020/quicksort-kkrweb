@@ -27,22 +27,26 @@ function quicksort(array) //iterative as specified, no recursion
     {
         if(startPos < pivotIndex - 1)
         {
-            endPos = pivotIndex - 1;
-            pivotIndex = partitionArr(array, startPos, endPos);
+            pivotIndex = partitionArr(array, startPos, pivotIndex - 1);
         }
-            
+           
         else if(endPos > pivotIndex + 1)
         {
             startPos = pivotIndex + 1;
             pivotIndex = partitionArr(array, startPos, endPos);
         }
-            
+           
         else
         {
-            break; //exit while true via break once neither the if or else if is satisfied
+            if(startPos >= endPos - 1)
+            {
+               break; //exit while true via break once all partitions are processed
+            }
+            startPos = pivotIndex + 1;
+            pivotIndex = partitionArr(array, startPos, endPos);
         }
-    
     }
+   
    return array;
 }
 
