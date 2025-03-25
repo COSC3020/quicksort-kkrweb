@@ -29,9 +29,10 @@ Feedback Request 1 Date: X
 
 //
 
-
 Response: Incomplete
 
+The time complexity of my implementation can be analysed as follows: 
+To compute a theta bound for the algorithm's worst case runtime, we must first consider how the functionality of the implementation is accomplished.
 
 //
 
