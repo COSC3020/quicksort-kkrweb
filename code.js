@@ -1,14 +1,12 @@
 // Kane Kriz
 // UWYO COSC 3020 Algorithms
-// 18 Feb 2025
+// Quicksort Exercise
+// 25 March 2025
 //
 //
 
 
 //
-
-
-//WIP, not 100% functional
 
 
 function quicksort(array) //iterative as specified, no recursion
@@ -57,7 +55,7 @@ function quicksort(array) //iterative as specified, no recursion
     //
 
 
-function partitionArr(array, startPos, endPos)
+function partitionArr(array, startPos, endPos) //helper. Tried to be stubborn and do it without one but I kept messing up the logic
 {
     var pivot; 
     var leftIndex;
@@ -81,5 +79,5 @@ function partitionArr(array, startPos, endPos)
         array[leftIndex + 1] = array[endPos];
         array[endPos] = temp;
 
-        return leftIndex + 1; //may need to change
+   return leftIndex + 1; //may need to change
 }
