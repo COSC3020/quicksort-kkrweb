@@ -54,8 +54,8 @@ The overall theta bound can be calculated as follows:
 When the input array is already sorted or sorted in reverse, each partition call processes a subarray that's only one element smaller than the previous one.
 This then would create the worst case scenario where the stack depth becomes linear rather than logarithmic.
 
-In this situation, partitionArr will be called n times, on subarrays from n to 1 in descending sequential order, resulting in a total runtime of Θ(n^2). 
-This experienced n^2 worst case behavior matches that of the recursive version of quicksort.
+In this situation, partitionArr will be called n times, on subarrays from n to 1 in descending sequential order, with the summation of their work resulting in a total runtime of Θ(n^2). 
+This experienced n^2 worst case behavior matches that of the recursive version of quicksort's theoretical bounds when using the same pivot selection strategy.
 This is the case as the iterative implementation utilizing a stack performs the same partition operations, just with positional stack management instead of recursive function calls.
 
 The choice to always select the last element as the pivot (line 34 in partitionArr) directly leads to this worst case behavior on sorted inputs.
