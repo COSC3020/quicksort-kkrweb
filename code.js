@@ -1,7 +1,7 @@
 // Kane Kriz
 // UWYO COSC 3020 Algorithms
 // Quicksort Exercise
-// 25 March 2025
+// 5 April 2025 - Edited For Feedback Request 2
 //
 //
 
@@ -42,8 +42,6 @@ function quicksort(array) //iterative as specified, no recursion
             {
                break; //exit while true via break once all partitions are processed
             }
-            startPos = pivotIndex + 1;
-            pivotIndex = partitionArr(array, startPos, endPos);
         }
     }
    
