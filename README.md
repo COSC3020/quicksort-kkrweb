@@ -62,7 +62,7 @@ This then would create the worst case scenario where the stack depth becomes lin
 In this situation, partitionArr will be called n times, on subarrays from n to 1 in descending sequential order, with the summation of their work resulting in a total runtime of Θ(n^2). 
 This experienced n^2 worst case behavior matches that of the recursive version of quicksort's theoretical bounds when using the same pivot selection strategy.
 This is the case as the iterative implementation utilizing a stack performs the same partition operations, just with positional stack management instead of recursive function calls.
-The choice to always select the last element as the pivot (line 34 in partitionArr) directly leads to this worst case behavior on sorted inputs.
+The choice to always select the last element as the pivot (line `pivot = array[endPos]` in partitionArr) directly leads to this worst case behavior on sorted inputs.
 As could potentially be assumed, this could be changed by instead implementing an alternate pivot selection method.
 
 
