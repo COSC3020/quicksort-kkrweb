@@ -1,8 +1,9 @@
 // Kane Kriz
 // UWYO COSC 3020 Algorithms
 // Quicksort Exercise
-// 5 April 2025 - Edited For Feedback Request 2
+// 7 April 2025 - Edited For Feedback Request
 //
+
 
 //
 
@@ -10,44 +11,39 @@
 function quicksort(array) //iterative as specified, no recursion
 {
    // var pivot; //probably useless to declare this here, may have to live within the helper
-    var arrLen = array.length;
+   var arrLen = array.length;
+   var partitionStack = [];
 
    if(arrLen == 0 || arrLen == 1)
     {
         return array; //0 or 1 elements, no need to sort, just return
     }
 
-    var startPos = 0;
-    var endPos = arrLen - 1;
-    var pivotIndex = partitionArr(array, startPos, endPos);
+    partitionStack.push(0);
+    partitionStack.push(arrLen - 1);
 
-    while(true)
+    while(partitionStack.length > 0) 
     {
-      if(startPos < pivotIndex - 1)
-          {
-           pivotIndex = partitionArr(array, startPos, pivotIndex - 1);
-          }
-              
-      else if(endPos > pivotIndex + 1)
-          {
-           startPos = pivotIndex + 1;
-           pivotIndex = partitionArr(array, startPos, endPos);
-          }
-          
-      else if(startPos < endPos - 1)
-         {
-           startPos = pivotIndex + 1;
-           pivotIndex = partitionArr(array, startPos, endPos);
-         }
-          
-       else
-       {
-           break;
-       }
-       
+        var endPos = partitionStack.pop();
+        var startPos = partitionStack.pop();
+        var pivotIndex = partitionArr(array, startPos, endPos);
+
+        //left parition handling
+        if(pivotIndex - 1 > startPos) 
+        {
+            partitionStack.push(startPos);
+            partitionStack.push(pivotIndex - 1);
+        }
+
+        //right partition handling
+        if(pivotIndex + 1 < endPos) 
+        {
+            partitionStack.push(pivotIndex + 1);
+            partitionStack.push(endPos);
+        }
     }
    
-   return array;
+    return array;
 }
 
 
